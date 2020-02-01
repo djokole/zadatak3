@@ -1,0 +1,18 @@
+Kratak opis web aplikacije:
+
+Ova aplikacija se sastoji od stranica: index.php, saznaj.php, saznajAPI.php i registracija.php
+
+-Početna stranica je index.php i ona je jedina statička. Na njoj se nalaze samo <h1> i <p> elementi koji ukratko predstavljaju smisao stranice.
+
+-Sledeća stranica je saznaj.php i ona prikazuje podatke o igrici izabranoj iz padajućeg menija. Ti podaci se nalazi u bazi podataka na serveru, što je realizovano sql upitom u php dokumentu ove stranice. Redosled događaja je sledeći:
+1. Kada se stranica učita dobijamo u padajućem meniju sva imena igrica iz baze
+2. Odabirom jedne igrice čuva se njen ID u varijabli
+3. Skripta saznaj.js uzima vrednost promenljive ID i preko AJAX tehnologije GET metodom uzima podatke iz php dokumenta ajmoigrice.php
+4. U dokumentu ajmoigrice.php se na osnovu vrednosti ID uzimaju svi ostali podaci o igrici iz baze i stavljaju se u odredjeni html raspored
+5. Skripta saznaj.js ukoliko je dobila povratni dokument u odgovarajućem html formatu ga postavlja na div (id=prikaz) koji je bio prazan do sad
+6. Koraci se ponavljaju svaki put kad se neka druga igrica izabere iz padajućeg menija
+
+-Treća stranica je saznajAPI.php i ona se ponaša na sličan način kao i druga samo što ne vuče podatke iz baze podataka sa servera, već sa API-ija koji sadrži veliki broj podataka o igricama (https://rapidapi.com/accujazz/api/rawg-video-games-database). Takođe preko ID promenljive se upravlja podacima. API dostavlja podatke u JSON formatu koji se formatira na određen način, to jeste biraju se potrebni podaci u ovo slučaju naslov i opis igrice.
+
+-Četvrta stranica je registracija.php koja sadrži formu u sebi u koju se unose podaci o osobi koja želi da se registruje, kao što su ime, prezime, email i password i POST metodom se ovi podaci skladište u bazu podataka.
+
